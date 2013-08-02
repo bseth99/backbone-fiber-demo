@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th data-column="title"><div>Title</div></th>
+      <th data-column="release_date"><div>Release Date</div></th>
+      <th data-column="mpaa_rating"><div>Rated</div></th>
+      <th data-column="ratings_critics"><div>Critics</div></th>
+      <th data-column="ratings_audience"><div>Audience</div></th>
+     </tr>
+  </thead>
+
+  <tbody>
+   <% $.each(data, function() { %>
+    <tr>
+      <td><div data-column="title"><a href="#"><%= this.title %></a></div></td>
+      <td><div><%= this.release_date_pretty %></div></td>
+      <td><div><%= this.mpaa_rating %></div></td>
+      <td><div><%= this.critics_rating %> (<%= this.critics_score %>%)</div></td>
+      <td><div><%= this.audience_rating %> (<%= this.audience_score %>%)</div></td>
+    </tr>
+   <% }); %>
+  </tbody>
+</table>

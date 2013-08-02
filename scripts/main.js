@@ -1,0 +1,1 @@
+require(["jquery","backbone","underscore","backbone-fiber","vendor/bootstrap","vendor/jquery-ui","vendor/jquery.outside-events","vendor/moment","text"],function(e,r,t){t.templateSettings.variable="data",r.Fiber.start()});

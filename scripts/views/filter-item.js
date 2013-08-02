@@ -1,0 +1,1 @@
+define(["backbone"],function(e){return e.View.extend({setup:function(){this.collection=new e.Collection},afterRender:function(){this.$("li").addClass("active")},events:{"click li":function(e){var t=$(e.currentTarget),i=this.collection.at(t.index()),n=!i.get("selected");return n?t.addClass("active"):t.removeClass("active"),i.set("selected",n),this.trigger("change",i),!1}}})});
