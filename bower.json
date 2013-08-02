@@ -1,0 +1,7 @@
+{
+  "name": "backbone-fiber-demo",
+  "version": "0.0.1",
+  "dependencies": {
+    "backbone-fiber": "https://github.com/bseth99/backbone-fiber.git"
+  }
+}

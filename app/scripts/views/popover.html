@@ -1,0 +1,26 @@
+<div class="arrow"></div>
+<div class="popover-content">
+   <center class="osb-waiting">
+      <img src="http://i1345.photobucket.com/albums/p665/benknowscode/waitbutton-loading_zps1e22f026.gif" border="0"/>
+   </center>
+   <div class="osb-ready">
+      <div class="row-fluid">
+         <div class="col-lg-3">
+            <img src="<%= data.image %>" border="0" height="80" />
+         </div>
+         <div class="col-lg-9">
+            <div><span style="color: orange; font-weight: bold;"><%= data.title %> (<%= data.year %>)</span></div>
+            <div><strong>Genre: </strong><%= data.genre %></div>
+            <div><strong>Studio: </strong><%= data.studio %></div>
+            <div><strong>Cast: </strong><%= data.cast %></div>
+         </div>
+      </div>
+      <div class="row-fluid">
+         <div class="col-lg-12">
+            <%= data.synopsis %>
+            <a href=<%= data.link %> target="rotten">... More</a>
+            <br/><br/>
+         </div>
+      </div>
+   </div>
+</div>
