@@ -3,7 +3,7 @@ Backbone.Fiber Demo
 
 This is the source for the demo application using Backbone.Fiber.  
 
-Check it out here
+Check [it out here](http://bseth99.github.io/backbone-fiber-demo/)
 
 Build
 ---------------
