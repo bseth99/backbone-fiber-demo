@@ -14,7 +14,8 @@ define(['backbone'], function( Backbone ) {
          this.$el.position({
             my: 'left center',
             at: 'right+30 center',
-            of: this.$alignTo
+            of: this.$alignTo,
+            collision: 'fit'
          });
       },
 
@@ -31,7 +32,8 @@ define(['backbone'], function( Backbone ) {
          this.$el.show().position({
             my: 'left center',
             at: 'right+30 center',
-            of: this.$alignTo
+            of: this.$alignTo,
+            collision: 'fit'
          });
 
          this.model = item;

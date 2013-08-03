@@ -28,6 +28,7 @@ define(['backbone'], function( Backbone ) {
 
             this.trigger( 'change', this.collection.at( $el.index() ).toJSON() );
 
+            return false;
          }
       }
 
