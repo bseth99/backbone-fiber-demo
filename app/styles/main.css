@@ -24,6 +24,26 @@
    z-index: 1060;
 }
 
+.modal {
+   overflow: hidden;
+}
+
+.modal-dialog {
+   padding-top: 50%;
+   transform: translate(0px, -50%);
+   -webkit-transform: translate(0px, -50%);
+}
+
+.progress-popup {
+   background-color: #fff;
+   margin-bottom: 0px;
+   opacity: 1;
+}
+
+.progress-bar.animate {
+   width: 100%;
+}
+
 body {
    padding-top: 60px;
    padding-bottom: 30px;

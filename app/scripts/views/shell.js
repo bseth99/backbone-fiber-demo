@@ -2,6 +2,8 @@ define(['backbone', 'models/movies'], function( Backbone, Movies ) {
 
    return Backbone.View.extend({
 
+      $progressBar: null,
+
       setup: function() {
 
          this.source = new Movies.List();
@@ -11,6 +13,12 @@ define(['backbone', 'models/movies'], function( Backbone, Movies ) {
       ready: function() {
 
          var data = this.source.toJSON();
+
+         this.$progressBar
+            .find('.progress-bar')
+               .removeClass('animate');
+
+         this.$progressBar.hide();
 
          this.findChild( 'sidebar' ).collection.reset([
                { title: 'Critics Rating', attribute: 'critics_rating', items: this.makeFilter('critics_rating') },
@@ -24,10 +32,16 @@ define(['backbone', 'models/movies'], function( Backbone, Movies ) {
          return (
             _.chain( this.source.pluck( attr ) )
                .uniq()
+               .compact()
                .map( function( d ) { return { label: d, selected: true }; } )
                .sortBy( 'label' )
                .value()
          );
+      },
+
+      afterRender: function() {
+
+         this.$progressBar = this.$('.js-loading-bar').hide();
       },
 
       events: {
@@ -35,6 +49,14 @@ define(['backbone', 'models/movies'], function( Backbone, Movies ) {
          'change.nav': function( event, ui ) {
 
             var self = this;
+
+            this.$progressBar.show();
+
+            setTimeout(function() {
+               self.$progressBar
+                  .find('.progress-bar')
+                  .addClass('animate');
+            }, 0);
 
             this.waitFor( ['sidebar', 'content'], function() {
                self.source.load( ui.data.action ).done(function() {
