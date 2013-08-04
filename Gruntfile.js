@@ -52,7 +52,7 @@ grunt.initConfig({
 
    uglify: {
 
-      dynamic_mappings: {
+      app: {
          files: [
             {
                expand: true,
@@ -62,6 +62,20 @@ grunt.initConfig({
                ext: '.js',
             },
          ],
+      },
+
+      /* Anything not optimized into bundle.js needs to be copied */
+      vendor: {
+         files: [
+            {
+               expand: true,
+               cwd: 'vendor_components/',
+               dest: 'dist/scripts/vendor/',
+               src: [
+                  'moment.js'
+               ]
+            }
+         ]
       }
    },
 

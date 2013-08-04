@@ -25,9 +25,6 @@ require.config({
      'vendor/jquery.outside-events': {
          deps: ['jquery'],
          exports: '$'
-     },
-     'vendor/moment': {
-         exports: 'moment'
      }
    }
 

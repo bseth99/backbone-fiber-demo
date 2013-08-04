@@ -7,7 +7,6 @@ require( [
    'vendor/bootstrap',
    'vendor/jquery-ui',
    'vendor/jquery.outside-events',
-   'vendor/moment',
    'text'
 ],
 function( $, Backbone, _ ) {

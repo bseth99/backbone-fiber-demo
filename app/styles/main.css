@@ -30,13 +30,13 @@
 
 .modal-dialog {
    padding-top: 50%;
-   transform: translate(0px, -50%);
    -webkit-transform: translate(0px, -50%);
+   transform: translate(0px, -50%);
 }
 
 .progress-popup {
    background-color: #fff;
-   margin-bottom: 0px;
+   margin-bottom: 0;
    opacity: 1;
 }
 
