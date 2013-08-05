@@ -14,6 +14,7 @@ define(['backbone', 'models/movies'], function( Backbone, Movies ) {
 
          var data = this.source.toJSON();
 
+         this.$progressBar.find('.progress-bar').removeClass('animate');
          this.$progressBar.modal('hide');
 
          this.findChild( 'sidebar' ).collection.reset([
@@ -49,8 +50,8 @@ define(['backbone', 'models/movies'], function( Backbone, Movies ) {
          'shown.bs.modal': function( event ) {
             var $el = $(event.target).find('.progress-bar');
 
-            $el.removeClass('animate');
-            _.defer(function() { $el.addClass('animate'); });
+            //$el.removeClass('animate');
+            _.delay(function() { $el.addClass('animate'); }, 100);
          },
 
          'change.nav': function( event, ui ) {
