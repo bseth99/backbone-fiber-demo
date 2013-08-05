@@ -24,8 +24,8 @@
    z-index: 1060;
 }
 
-.modal {
-   overflow: hidden;
+.modal-backdrop {
+   opacity: 0.5;
 }
 
 .modal-dialog {

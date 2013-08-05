@@ -14,11 +14,7 @@ define(['backbone', 'models/movies'], function( Backbone, Movies ) {
 
          var data = this.source.toJSON();
 
-         this.$progressBar
-            .find('.progress-bar')
-               .removeClass('animate');
-
-         this.$progressBar.hide();
+         this.$progressBar.modal('hide');
 
          this.findChild( 'sidebar' ).collection.reset([
                { title: 'Critics Rating', attribute: 'critics_rating', items: this.makeFilter('critics_rating') },
@@ -41,22 +37,27 @@ define(['backbone', 'models/movies'], function( Backbone, Movies ) {
 
       afterRender: function() {
 
-         this.$progressBar = this.$('.js-loading-bar').hide();
+         this.$progressBar =
+            this.$('.js-loading-bar').modal({
+               backdrop: 'static',
+               show: false
+            });
       },
 
       events: {
+
+         'shown.bs.modal': function( event ) {
+            var $el = $(event.target).find('.progress-bar');
+
+            $el.removeClass('animate');
+            _.defer(function() { $el.addClass('animate'); });
+         },
 
          'change.nav': function( event, ui ) {
 
             var self = this;
 
-            this.$progressBar.show();
-
-            setTimeout(function() {
-               self.$progressBar
-                  .find('.progress-bar')
-                  .addClass('animate');
-            }, 0);
+            this.$progressBar.modal('show');
 
             this.waitFor( ['sidebar', 'content'], function() {
                self.source.load( ui.data.action ).done(function() {
