@@ -21,13 +21,8 @@ define(['backbone', 'vendor/moment'], function( Backbone, moment ) {
 
       },
 
-      initialize: function() {
-
-         // Because the constructor used the one from the collection,
-         // I don't want that ...
-         this.url = function () {
-            return _.result(this.collection, 'url')+'movies/'+this.id+'.json?apikey='+this.collection.apikey;
-         }
+      url: function () {
+         return _.result(this.collection, 'urlRoot')+'movies/'+this.id+'.json?apikey='+this.collection.apikey;
       },
 
       parse: function ( res ) {
@@ -66,6 +61,7 @@ define(['backbone', 'vendor/moment'], function( Backbone, moment ) {
 
    });
 
+
    return {
 
       Item: MovieModel,
@@ -73,8 +69,14 @@ define(['backbone', 'vendor/moment'], function( Backbone, moment ) {
       List: Backbone.Collection.extend({
 
          model: MovieModel,
+
+         urlRoot: 'http://api.rottentomatoes.com/api/public/v1.0/',
          apikey: 'xc8w3a2sbj7b7mgrv9e75c52', /* please change to use your key */
-         url: 'http://api.rottentomatoes.com/api/public/v1.0/',
+         listSrc: 'box_office',
+
+         url: function () {
+               return _.result(this, 'urlRoot') + 'lists/movies/' + this.listSrc + '.json?apikey=' + this.apikey;
+         },
 
          sync: function(method, model, options){
 
@@ -89,12 +91,11 @@ define(['backbone', 'vendor/moment'], function( Backbone, moment ) {
             return res.movies;
          },
 
-         load: function ( dbd ) {
+         load: function ( lsrc ) {
 
-            var db = dbd || 'box_office';
+            this.listSrc = lsrc || 'box_office';
 
-            return this.fetch({ url: _.result(this, 'url') + 'lists/movies/' + db + '.json?apikey=' + this.apikey });
-
+            return this.fetch();
 
          }
 
