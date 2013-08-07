@@ -47,18 +47,12 @@ define(['backbone', 'models/movies'], function( Backbone, Movies ) {
 
       events: {
 
-         'shown.bs.modal': function( event ) {
-            var $el = $(event.target).find('.progress-bar');
-
-            //$el.removeClass('animate');
-            _.delay(function() { $el.addClass('animate'); }, 100);
-         },
-
          'change.nav': function( event, ui ) {
 
             var self = this;
 
-            this.$progressBar.modal('show');
+            this.$progressBar.modal('show').is(':visible');
+            this.$progressBar.find('.progress-bar').addClass('animate');
 
             this.waitFor( ['sidebar', 'content'], function() {
                self.source.load( ui.data.action ).done(function() {
