@@ -11,6 +11,7 @@
 }
 
 .navbar-small .navbar-text {
+   float: none;
    font-size: 0.8em;
    margin-bottom: 7px;
    margin-top: 7px;
@@ -28,8 +29,8 @@
    opacity: 0.5;
 }
 
-.modal-dialog {
-   padding-top: 50%;
+.modal {
+   top: 50%;
    -webkit-transform: translate(0px, -50%);
    transform: translate(0px, -50%);
 }
