@@ -1,12 +1,14 @@
 <div class="col-lg-12">
    <h4>Filters</h4>
 <% $.each(data, function() { %>
-   <div class="panel">
+   <div class="panel panel-default">
      <!-- Default panel contents -->
      <div class="panel-heading"><%= this.title %></div>
 
      <!-- nav-pills -->
-     <ul class="nav nav-pills nav-pills-wrap" data-view="filter-item" data-filters="<%= this.attribute %>"></ul>
+     <div class="panel-body">
+       <ul class="nav nav-pills nav-pills-wrap" data-view="filter-item" data-filters="<%= this.attribute %>"></ul>
+     </div>
    </div>
 <% }); %>
 </div>
